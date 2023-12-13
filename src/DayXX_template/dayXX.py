@@ -1,10 +1,10 @@
 def get_data(filename):
     data = []
     with open(filename, 'r') as file:
-        line = file.readline()
+        line = file.readline().strip()
         while line:
             # logic here
-            line = file.readline()
+            line = file.readline().strip()
     return data
 
 
