@@ -44,12 +44,25 @@ def make_next(gs, last_gs):
 
 
 def make_gs(gn, line):
+    allowed = line.replace("?", "#")
     gs = []
     l = 0
+    position = 0
     for n in gn:
         g_str = ''.join(["#" for j in range(n)])
-        gs.append(g_str)
+        found_place = True
         l += n
+        while found_place:
+            found_place = False
+            if allowed[position:position + len(g_str)] == g_str:
+                found_place = True
+                gs.append(g_str)
+                position += len(g_str)
+            else:
+                g_str = '.' + g_str
+                gs.append('.')
+                l += 1
+                position += 1
         if len(gs) < len(gn) * 2 - 1:
             gs.append(".")
             l += 1
@@ -109,10 +122,11 @@ def run_part2(filename):
         p_count = 0
         next_gs = gs
         while next_gs:
-            if check_ok(next_gs, line):
-                p_count += 1
+            # print(next_gs)
+            # if check_ok(next_gs, line):
+            #     p_count += 1
             next_gs = make_next(next_gs, last_gs)
-
+        print("Line done!")
         total_counter += p_count
 
     print(f"Total counter : {total_counter}")
@@ -121,6 +135,6 @@ def run_part2(filename):
 
 if __name__ == "__main__":
 
-    run_part2("test.txt")
+    run_part1("test.txt")
 
 
