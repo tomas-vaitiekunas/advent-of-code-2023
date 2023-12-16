@@ -201,7 +201,6 @@ def run_part2(filename):
 
         print(f"X Progress : {x} / {len(tiles[0])}")
 
-
     print(f"Grand total number of energized tiles : {grand_total_counter}")
 
 
@@ -209,4 +208,5 @@ if __name__ == "__main__":
 
     run_part2("input.txt")
 
-
+# Part 1 : 7496
+# Part 2 : 7932
